@@ -1,8 +1,0 @@
-{
-  "Tests/Test1.py::test_100000": true,
-  "Tests/Test1.py::test_1000000": true,
-  "Tests/Test1.py::test_1337": true,
-  "Tests/Test1.py::test_3091": true,
-  "Tests/Test1.py::test_342900": true,
-  "Tests/Test2.py::test_2": true
-}
