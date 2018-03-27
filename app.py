@@ -81,7 +81,6 @@ def to_text(i, nums=None):
     base = ""
     if i == 0:
         return nums.get(i)
-
     if i < 0:
         base = "minus "
         i = abs(i)
