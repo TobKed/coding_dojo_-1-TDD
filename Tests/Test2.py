@@ -56,6 +56,9 @@ def test_999():
 def test_1001():
     assert to_text(1001) == 'tysiąc jeden'
 
+def test_1101():
+    assert to_text(1101) == 'tysiąc sto jeden'
+
 def test_1999():
     assert to_text(1999) == 'tysiąc dziewięćset dziewięćdziesiąt dziewięć'
 

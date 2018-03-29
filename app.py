@@ -33,12 +33,15 @@ liczby = {0:"zero",
 def give_1_99(i, nums):
     base = ""
     space = ""
-    if i <= 19:
-        base = nums.get(i)
+    tens = int(str(i).zfill(2)[-2:])
+    if 0 < tens <= 19:
+        # if i > 99:
+        #     base += " "
+        base += nums.get(tens)
     else:
-        tens, ones = divmod(i%100, 10)
-        if i > 99 and (tens is not 0 or ones is not 0):
-            base += " "
+        tens, ones = divmod(tens, 10)
+        # if i > 99 and (tens is not 0 or ones is not 0):
+        #     base += " "
         if tens is 0:
             tens = ""
         elif tens < 5:
@@ -56,24 +59,29 @@ def give_1_99(i, nums):
 
 
 def give_100_999(i, nums):
+    base = ""
     if i < 100:
-        return ""
+        return base
     if i is 100:
-        return nums.get(100)
-    if i is 200:
-        return nums.get(200)
-    hundreds = i // 100
-    hundreds = int(str(hundreds)[-1])
-    if hundreds is 0:
-        return ""
-    elif hundreds is 1:
-        return nums.get(hundreds*100)
-    elif hundreds is 2:
-        return nums.get(hundreds*100)
-    elif hundreds < 5:
-        return nums.get(hundreds) + "sta"
+        base += nums.get(100)
+    elif i is 200:
+        base += nums.get(200)
     else:
-        return nums.get(hundreds) + "set"
+        hundreds = i // 100
+        hundreds = int(str(hundreds)[-1])
+        if hundreds is 0:
+            return ""
+        elif hundreds is 1:
+            base += nums.get(hundreds*100)
+        elif hundreds is 2:
+            base += nums.get(hundreds*100)
+        elif hundreds < 5:
+            base += nums.get(hundreds) + "sta"
+        else:
+            base += nums.get(hundreds) + "set"
+    if int(str(i).zfill(2)[-2:]) > 0:
+        base += " "
+    return base
 
 
 def give_1000_999000(i, nums):
@@ -94,9 +102,10 @@ def give_1000_999000(i, nums):
         base += "{}{} {}".format(give_100_999(thousands, nums), give_1_99(thousands, nums), ending)
 
     if i > 999:
-        if int(str(i).zfill(3)[-3]) > 0:
+        if int(str(i).zfill(3)[-3:]) > 0:
             base += " "
     return base
+
 
 def give_1000000(i, nums):
     base = ""
