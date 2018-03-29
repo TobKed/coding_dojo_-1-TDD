@@ -84,7 +84,7 @@ def give_1000_999000(i, nums):
     thousands = i // 1000
     thousands = int(str(thousands).zfill(3)[-3:])
     if thousands is 0:
-        base += nums.get(1000)
+        return base
     if thousands is 1:
         base += "tysiąc"
     else:
@@ -96,6 +96,15 @@ def give_1000_999000(i, nums):
     if i > 999:
         if int(str(i).zfill(3)[-3]) > 0:
             base += " "
+    return base
+
+def give_1000000(i, nums):
+    base = ""
+    milions, rest = divmod(i, 1000000)
+    if milions is 1:
+        base += nums.get(1000000)
+    if milions and rest:
+        base += " "
     return base
 
 
@@ -110,7 +119,10 @@ def to_text(i, nums=None):
         base = "minus "
         i = abs(i)
 
-    # 1000-9999
+    # 1000000
+    base += give_1000000(i, nums)
+
+    # 1000-999000
     base += give_1000_999000(i, nums)
 
     # 100-999
