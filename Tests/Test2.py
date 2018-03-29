@@ -46,3 +46,18 @@ def test_152():
 
 def test_199():
     assert to_text(199) == "sto dziewięćdziesiąt dziewięć"
+
+def test_999():
+    assert to_text(999) == "dziewięćset dziewięćdziesiąt dziewięć"
+
+def test_1001():
+    assert to_text(1001) == "tysiąc jeden"
+
+def test_1999():
+    assert to_text(1999) == "tysiąc dziewięćset dziewięćdziesiąt dziewięć"
+
+def test_500000():
+    assert to_text(500000) == "pięćset tysięcy"
+
+def test_999999():
+    assert to_text(999999) == "dziewięćset dziewięćdziesiąt dziewięć tysięcy dziewięćset dziewięćdziesiąt dziewięć"
